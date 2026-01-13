@@ -1,0 +1,68 @@
+[
+  { "id": 1, "name": "Rice (1kg)", "price": 60, "category": "groceries", "img": "https://source.unsplash.com/200x200/?rice" },
+  { "id": 2, "name": "Wheat Flour (1kg)", "price": 55, "category": "groceries", "img": "https://source.unsplash.com/200x200/?flour" },
+  { "id": 3, "name": "Milk (1L)", "price": 30, "category": "dairy", "img": "https://source.unsplash.com/200x200/?milk" },
+  { "id": 4, "name": "Eggs (12 pcs)", "price": 75, "category": "dairy", "img": "https://source.unsplash.com/200x200/?eggs" },
+  { "id": 5, "name": "Cooking Oil (1L)", "price": 140, "category": "groceries", "img": "https://source.unsplash.com/200x200/?oil" },
+
+  { "id": 6, "name": "Sugar (1kg)", "price": 45, "category": "groceries", "img": "https://source.unsplash.com/200x200/?sugar" },
+  { "id": 7, "name": "Salt (1kg)", "price": 20, "category": "groceries", "img": "https://source.unsplash.com/200x200/?salt" },
+
+  { "id": 8, "name": "Tomato (1kg)", "price": 35, "category": "vegetables", "img": "https://source.unsplash.com/200x200/?tomato" },
+  { "id": 9, "name": "Onion (1kg)", "price": 40, "category": "vegetables", "img": "https://source.unsplash.com/200x200/?onion" },
+  { "id": 10, "name": "Potato (1kg)", "price": 30, "category": "vegetables", "img": "https://source.unsplash.com/200x200/?potato" },
+
+  { "id": 11, "name": "Apple (1kg)", "price": 120, "category": "fruits", "img": "https://source.unsplash.com/200x200/?apple" },
+  { "id": 12, "name": "Banana (1 dozen)", "price": 50, "category": "fruits", "img": "https://source.unsplash.com/200x200/?banana" },
+  { "id": 13, "name": "Orange (1kg)", "price": 80, "category": "fruits", "img": "https://source.unsplash.com/200x200/?orange" },
+  { "id": 14, "name": "Grapes (500g)", "price": 70, "category": "fruits", "img": "https://source.unsplash.com/200x200/?grapes" },
+
+  { "id": 15, "name": "Bread", "price": 40, "category": "bakery", "img": "https://source.unsplash.com/200x200/?bread" },
+  { "id": 16, "name": "Butter", "price": 90, "category": "dairy", "img": "https://source.unsplash.com/200x200/?butter" },
+  { "id": 17, "name": "Cheese", "price": 110, "category": "dairy", "img": "https://source.unsplash.com/200x200/?cheese" },
+
+  { "id": 18, "name": "Tea Powder", "price": 150, "category": "beverages", "img": "https://source.unsplash.com/200x200/?tea" },
+  { "id": 19, "name": "Coffee Powder", "price": 180, "category": "beverages", "img": "https://source.unsplash.com/200x200/?coffee" },
+  { "id": 20, "name": "Biscuits", "price": 25, "category": "snacks", "img": "https://source.unsplash.com/200x200/?biscuits" },
+
+  { "id": 21, "name": "Shampoo", "price": 120, "category": "personal", "img": "https://source.unsplash.com/200x200/?shampoo" },
+  { "id": 22, "name": "Soap", "price": 40, "category": "personal", "img": "https://source.unsplash.com/200x200/?soap" },
+  { "id": 23, "name": "Toothpaste", "price": 90, "category": "personal", "img": "https://source.unsplash.com/200x200/?toothpaste" },
+
+  { "id": 24, "name": "Detergent", "price": 160, "category": "household", "img": "https://source.unsplash.com/200x200/?detergent" },
+  { "id": 25, "name": "Dish Wash", "price": 85, "category": "household", "img": "https://source.unsplash.com/200x200/?dishwash" },
+
+  { "id": 26, "name": "Carrot (1kg)", "price": 45, "category": "vegetables", "img": "https://source.unsplash.com/200x200/?carrot" },
+  { "id": 27, "name": "Beans (1kg)", "price": 50, "category": "vegetables", "img": "https://source.unsplash.com/200x200/?beans" },
+  { "id": 28, "name": "Cabbage", "price": 30, "category": "vegetables", "img": "https://source.unsplash.com/200x200/?cabbage" },
+  { "id": 29, "name": "Cauliflower", "price": 40, "category": "vegetables", "img": "https://source.unsplash.com/200x200/?cauliflower" },
+
+  { "id": 30, "name": "Green Chilli", "price": 20, "category": "vegetables", "img": "https://source.unsplash.com/200x200/?chilli" },
+
+  { "id": 31, "name": "Turmeric Powder", "price": 60, "category": "spices", "img": "https://source.unsplash.com/200x200/?turmeric" },
+  { "id": 32, "name": "Chilli Powder", "price": 70, "category": "spices", "img": "https://source.unsplash.com/200x200/?spices" },
+  { "id": 33, "name": "Coriander Powder", "price": 65, "category": "spices", "img": "https://source.unsplash.com/200x200/?coriander" },
+
+  { "id": 35, "name": "Pickle", "price": 55, "category": "groceries", "img": "https://source.unsplash.com/200x200/?pickle" },
+
+  { "id": 36, "name": "Jam", "price": 95, "category": "snacks", "img": "https://source.unsplash.com/200x200/?jam" },
+  { "id": 37, "name": "Honey", "price": 150, "category": "snacks", "img": "https://source.unsplash.com/200x200/?honey" },
+
+  { "id": 38, "name": "Cornflakes", "price": 140, "category": "breakfast", "img": "https://source.unsplash.com/200x200/?cornflakes" },
+  { "id": 39, "name": "Oats", "price": 130, "category": "breakfast", "img": "https://source.unsplash.com/200x200/?oats" },
+
+  { "id": 40, "name": "Dry Fruits", "price": 250, "category": "snacks", "img": "https://source.unsplash.com/200x200/?dryfruits" },
+
+  { "id": 41, "name": "Soft Drink", "price": 40, "category": "beverages", "img": "https://source.unsplash.com/200x200/?softdrink" },
+  { "id": 42, "name": "Juice", "price": 60, "category": "beverages", "img": "https://source.unsplash.com/200x200/?juice" },
+  { "id": 43, "name": "Water Bottle", "price": 20, "category": "beverages", "img": "https://source.unsplash.com/200x200/?water" },
+
+  { "id": 44, "name": "Ice Cream", "price": 80, "category": "frozen", "img": "https://source.unsplash.com/200x200/?icecream" },
+  { "id": 45, "name": "Chocolate", "price": 50, "category": "snacks", "img": "https://source.unsplash.com/200x200/?chocolate" },
+
+  { "id": 46, "name": "Noodles", "price": 30, "category": "instant", "img": "https://source.unsplash.com/200x200/?noodles" },
+  { "id": 47, "name": "Pasta", "price": 60, "category": "instant", "img": "https://source.unsplash.com/200x200/?pasta" },
+  { "id": 48, "name": "Sauce", "price": 55, "category": "instant", "img": "https://source.unsplash.com/200x200/?sauce" },
+  { "id": 49, "name": "Ketchup", "price": 45, "category": "instant", "img": "https://source.unsplash.com/200x200/?ketchup" },
+  { "id": 50, "name": "Mayonnaise", "price": 70, "category": "instant", "img": "https://source.unsplash.com/200x200/?mayonnaise" }
+]

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order History</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            margin: 40px 0;
+            color: #333;
+        }
+
+        #orders {
+            max-width: 1000px;
+            margin: 0 auto 50px auto;
+            padding: 0 20px;
+        }
+
+        .order-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        .order-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .order-header h3 {
+            margin: 0;
+            color: #4CAF50;
+            font-size: 18px;
+        }
+
+        .order-status {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #fff;
+        }
+
+        .pending { background: #FF9800; }
+        .shipped { background: #2196F3; }
+        .delivered { background: #4CAF50; }
+
+        .order-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .order-info p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .order-items {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .order-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .order-item img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 15px;
+        }
+
+        .order-item-details {
+            flex: 1;
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+        }
+
+        @media(max-width: 768px){
+            .order-info {
+                flex-direction: column;
+            }
+            .order-item-details {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h2>🧾 Order History</h2>
+<div id="orders"></div>
+
+<script>
+// Load orders from backend
+const API = "http://localhost:3000";
+
+function getProductById(id, products){
+    return products.find(p => p.id === id) || {name:"Unknown", price:0, img:"https://via.placeholder.com/50"};
+}
+
+function loadOrders(){
+    fetch(API + "/orders")
+        .then(res => res.json())
+        .then(orders => {
+            fetch(API + "/products")
+                .then(res => res.json())
+                .then(products => {
+                    const ordersDiv = document.getElementById("orders");
+                    ordersDiv.innerHTML = "";
+
+                    if(orders.length === 0){
+                        ordersDiv.innerHTML = "<p style='text-align:center;'>No orders yet.</p>";
+                        return;
+                    }
+
+                    orders.forEach(order => {
+                        let itemsHTML = "";
+                        order.items.forEach(itemId => {
+                            const item = getProductById(itemId, products);
+                            itemsHTML += `
+                                <div class="order-item">
+                                    <img src="${item.img}" alt="${item.name}">
+                                    <div class="order-item-details">
+                                        <span>${item.name}</span>
+                                        <span>₹${item.price}</span>
+                                    </div>
+                                </div>
+                            `;
+                        });
+
+                        // Use order.status if available, else default "pending"
+                        const status = order.status || "pending";
+
+                        ordersDiv.innerHTML += `
+                            <div class="order-card">
+                                <div class="order-header">
+                                    <h3>Order #${order.id} - ${order.date || "N/A"}</h3>
+                                    <span class="order-status ${status}">${status.charAt(0).toUpperCase() + status.slice(1)}</span>
+                                </div>
+                                <div class="order-info">
+                                    <p><strong>Name:</strong> ${order.name}</p>
+                                    <p><strong>Phone:</strong> ${order.phone}</p>
+                                    <p><strong>Address:</strong> ${order.location}</p>
+                                    <p><strong>Payment:</strong> ${order.payment}</p>
+                                    <p><strong>Total:</strong> ₹${order.total}</p>
+                                </div>
+                                <div class="order-items">
+                                    ${itemsHTML}
+                                </div>
+                            </div>
+                        `;
+                    });
+                });
+        });
+}
+
+// Load orders on page load
+loadOrders();
+</script>
+
+</body>
+</html>

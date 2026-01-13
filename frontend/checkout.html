@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout - Grocery Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="checkout-header">
+    <h2>Checkout</h2>
+    <div class="user-section">
+        <span id="usernameDisplay" style="display:none;"></span>
+        <button id="logoutBtn" style="display:none;">Logout</button>
+    </div>
+</header>
+
+<section class="checkout-container">
+
+    <!-- Order Summary (Left) -->
+    <div class="summary-box">
+        <h3>Order Summary</h3>
+        <div id="checkoutProducts"></div>
+        <hr>
+        <div class="total-display">
+            <span>Total Amount:</span>
+            <span id="checkoutTotal">₹0</span>
+        </div>
+    </div>
+
+    <!-- Shipping & Payment (Right) -->
+    <form class="checkout-form" onsubmit="submitOrder(event)">
+
+        <h3>Shipping Details</h3>
+
+        <input type="text" id="cname" placeholder="Full Name" required>
+        <input type="text" id="cphone" placeholder="Phone Number" required>
+        <input type="text" id="clocation" placeholder="Delivery Address" required>
+
+        <h3>Payment Method</h3>
+        <select id="cpayment" required>
+            <option value="UPI">UPI</option>
+            <option value="Card">Card Payment</option>
+            <option value="COD">Cash on Delivery</option>
+        </select>
+
+        <button type="submit" class="pay-btn">Place Order</button>
+
+    </form>
+
+</section>
+
+<script src="script.js"></script>
+<script>
+// ===== LOGIN PROTECTION =====
+const loggedIn = localStorage.getItem("loggedIn");
+const username = localStorage.getItem("username");
+const usernameDisplay = document.getElementById("usernameDisplay");
+const logoutBtn = document.getElementById("logoutBtn");
+
+if(loggedIn === "yes" && username){
+    usernameDisplay.style.display = "inline-block";
+    usernameDisplay.innerText = "Hello, " + username;
+
+    logoutBtn.style.display = "inline-block";
+} else {
+    // If not logged in, redirect to login page
+    alert("Please login first!");
+    window.location.href = "login.html";
+}
+
+// ===== LOGOUT FUNCTIONALITY =====
+logoutBtn.addEventListener("click", function(){
+    localStorage.removeItem("loggedIn");
+    localStorage.removeItem("username");
+    window.location.href = "login.html";
+});
+</script>
+</body>
+</html>

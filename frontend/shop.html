@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Shop Groceries</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="shop-header">
+    <h2>🛒 Grocery Shop</h2>
+
+    <div class="shop-actions">
+        <input type="text" id="search" placeholder="Search products..." onkeyup="searchItems()">
+
+        <!-- Cart and User Section -->
+        <a href="checkout.html" class="cart-btn">
+            Cart (<span id="cartCount">0</span>)
+        </a>
+
+        <span id="userSection">
+            <a href="login.html" class="login-btn" id="loginBtn">Login</a>
+            <span id="usernameDisplay" style="display:none;"></span>
+            <button id="logoutBtn" style="display:none;">Logout</button>
+        </span>
+    </div>
+</header>
+
+<!-- CATEGORY BAR -->
+<div class="categories">
+  <button class="active" onclick="filterCategory('all')">All</button>
+  <button onclick="filterCategory('fruits')">Fruits</button>
+  <button onclick="filterCategory('vegetables')">Vegetables</button>
+  <button onclick="filterCategory('dairy')">Dairy</button>
+  <button onclick="filterCategory('groceries')">Groceries</button>
+  <button onclick="filterCategory('snacks')">Snacks</button>
+  <button onclick="filterCategory('beverages')">Beverages</button>
+  <button onclick="filterCategory('household')">Household</button>
+</div>
+
+<!-- PRODUCTS GRID -->
+<div id="products" class="product-grid"></div>
+
+<script src="script.js"></script>
+<script>
+// ===== LOGIN PROTECTION =====
+const loggedIn = localStorage.getItem("loggedIn");
+const username = localStorage.getItem("username");
+const loginBtn = document.getElementById("loginBtn");
+const usernameDisplay = document.getElementById("usernameDisplay");
+const logoutBtn = document.getElementById("logoutBtn");
+const cartBtn = document.querySelector(".cart-btn");
+
+// If not logged in, redirect
+if(loggedIn !== "yes"){
+    alert("Please login first!");
+    window.location.href = "login.html";
+} else {
+    // Show username and hide login button
+    loginBtn.style.display = "none";
+    usernameDisplay.style.display = "inline-block";
+    usernameDisplay.innerText = "Hello, " + username;
+    logoutBtn.style.display = "inline-block";
+}
+
+// Logout functionality
+logoutBtn.addEventListener("click", function(){
+    localStorage.removeItem("loggedIn");
+    localStorage.removeItem("username");
+    window.location.href = "login.html";
+});
+
+// Optional: prevent cart access if not logged in (already handled above)
+cartBtn.addEventListener("click", function(e){
+    if(localStorage.getItem("loggedIn") !== "yes"){
+        e.preventDefault();
+        alert("Please login first!");
+        window.location.href = "login.html";
+    }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Online Grocery Store</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top-header">
+    <div class="logo">GROCERY</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="orders.html">Orders</a>
+        <span id="userSection">
+            <a href="login.html" class="login-btn" id="loginBtn">Login</a>
+            <span id="usernameDisplay" style="display:none;"></span>
+            <button id="logoutBtn" style="display:none;">Logout</button>
+        </span>
+    </nav>
+</header>
+
+<section class="home">
+    <div class="home-text">
+        <h1>Buy Fresh<br>Groceries Online</h1>
+        <p>
+            Order fruits, vegetables, and daily essentials online.
+            Fast delivery right to your doorstep.
+        </p>
+
+        <div class="home-buttons">
+            <a href="#" class="primary-btn" id="shopNowBtn">Shop Now</a>
+            <a href="login.html" class="secondary-btn" id="loginBtnHome">Login</a>
+        </div>
+    </div>
+
+    <div class="home-image">
+        <img src="grocery.png" alt="Online Grocery">
+    </div>
+</section>
+
+<script>
+// Check login status
+const loggedIn = localStorage.getItem("loggedIn");
+const username = localStorage.getItem("username");
+
+// Header elements
+const loginBtn = document.getElementById("loginBtn");
+const loginBtnHome = document.getElementById("loginBtnHome");
+const usernameDisplay = document.getElementById("usernameDisplay");
+const logoutBtn = document.getElementById("logoutBtn");
+const shopNowBtn = document.getElementById("shopNowBtn");
+
+if(loggedIn === "yes" && username){
+    // Hide login buttons
+    loginBtn.style.display = "none";
+    loginBtnHome.style.display = "none";
+
+    // Show username
+    usernameDisplay.style.display = "inline-block";
+    usernameDisplay.innerText = "Hello, " + username;
+
+    // Show logout
+    logoutBtn.style.display = "inline-block";
+} else {
+    // If not logged in, disable Shop Now
+    shopNowBtn.addEventListener("click", function(e){
+        e.preventDefault();
+        alert("Please login first!");
+        window.location.href = "login.html";
+    });
+}
+
+// Shop Now click for logged-in users
+shopNowBtn.addEventListener("click", function(){
+    if(localStorage.getItem("loggedIn") === "yes"){
+        window.location.href = "shop.html";
+    }
+});
+
+// Logout functionality
+logoutBtn.addEventListener("click", function(){
+    localStorage.removeItem("loggedIn");
+    localStorage.removeItem("username");
+    window.location.reload();
+});
+</script>
+
+</body>
+</html>
