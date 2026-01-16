@@ -105,11 +105,11 @@ function searchItems(){
 // =====================================
 // CATEGORY FILTER (SHOP PAGE)
 // =====================================
-function filterCategory(cat){
+function filterCategory(cat, btn){
     document.querySelectorAll(".categories button")
-        .forEach(b=>b.classList.remove("active"));
+        .forEach(b => b.classList.remove("active"));
 
-    event.target.classList.add("active");
+    btn.classList.add("active");
 
     if(cat === "all"){
         filteredProducts = allProducts;
@@ -135,16 +135,15 @@ function loadCheckoutSummary() {
     for(let id in cart){
         const qty = cart[id];
         const product = allProducts.find(p => p.id == id);
-        if(product){
-            checkoutProducts.innerHTML += `
-                <p>
-                    ${product.name} × ${qty} <span>₹${product.price * qty}</span>
-                    <button onclick="decreaseQty(${id})" style="margin-left:10px;background:red;color:white;">-</button>
-                    <button onclick="increaseQty(${id})" style="margin-left:5px;background:green;color:white;">+</button>
-                </p>
-            `;
-            total += product.price * qty;
-        }
+        if(!product) continue; // safety check
+        checkoutProducts.innerHTML += `
+            <p>
+                ${product.name} × ${qty} <span>₹${product.price * qty}</span>
+                <button onclick="decreaseQty(${id})" style="margin-left:10px;background:red;color:white;">-</button>
+                <button onclick="increaseQty(${id})" style="margin-left:5px;background:green;color:white;">+</button>
+            </p>
+        `;
+        total += product.price * qty;
     }
 
     checkoutTotal.innerText = "₹" + total;
