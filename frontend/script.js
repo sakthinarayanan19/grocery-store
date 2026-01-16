@@ -1,7 +1,7 @@
 // =====================================
 // GLOBAL VARIABLES
 // =====================================
-const API = "http://localhost:3000";
+const API = "https://grocery-store-backend-cy0w.onrender.com";
 let cart = JSON.parse(localStorage.getItem("cart")) || {}; // {id: quantity}
 let allProducts = [];
 let filteredProducts = [];
