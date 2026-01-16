@@ -5,6 +5,7 @@
 <title>Online Grocery Store</title>
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <header class="top-header">
@@ -41,11 +42,9 @@
 </section>
 
 <script>
-// Check login status
 const loggedIn = localStorage.getItem("loggedIn");
 const username = localStorage.getItem("username");
 
-// Header elements
 const loginBtn = document.getElementById("loginBtn");
 const loginBtnHome = document.getElementById("loginBtnHome");
 const usernameDisplay = document.getElementById("usernameDisplay");
@@ -53,18 +52,12 @@ const logoutBtn = document.getElementById("logoutBtn");
 const shopNowBtn = document.getElementById("shopNowBtn");
 
 if(loggedIn === "yes" && username){
-    // Hide login buttons
     loginBtn.style.display = "none";
     loginBtnHome.style.display = "none";
-
-    // Show username
     usernameDisplay.style.display = "inline-block";
     usernameDisplay.innerText = "Hello, " + username;
-
-    // Show logout
     logoutBtn.style.display = "inline-block";
 } else {
-    // If not logged in, disable Shop Now
     shopNowBtn.addEventListener("click", function(e){
         e.preventDefault();
         alert("Please login first!");
@@ -72,14 +65,12 @@ if(loggedIn === "yes" && username){
     });
 }
 
-// Shop Now click for logged-in users
 shopNowBtn.addEventListener("click", function(){
     if(localStorage.getItem("loggedIn") === "yes"){
         window.location.href = "shop.html";
     }
 });
 
-// Logout functionality
 logoutBtn.addEventListener("click", function(){
     localStorage.removeItem("loggedIn");
     localStorage.removeItem("username");
